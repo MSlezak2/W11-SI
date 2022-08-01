@@ -29,5 +29,16 @@ int main() {
 		std::cout << "Something here is no yes" << std::endl;
 	}
 
+	std::cout << dynamicArray[1] << std::endl;
+
+	dynamicArray.clear();
+	dynamicArray.displayAllElements();
+	dynamicArray.pushBack(0);
+	dynamicArray.pushBack(1);
+	dynamicArray.pushBack(2);
+	dynamicArray.pushBack(3);
+	dynamicArray.displayAllElements();
+
+
 	return 0;
 }

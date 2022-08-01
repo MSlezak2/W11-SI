@@ -35,6 +35,10 @@ int DynamicArray::get(int index) {
 	return element;
 }
 
+int DynamicArray::operator[](int index) {
+	return get(index);
+}
+
 void DynamicArray::set(int index, int value) {
 	if (index >= 0 && index < currentSize) {
 		staticArray[index] = value;
@@ -49,6 +53,13 @@ void DynamicArray::displayAllElements() {
 			std::cout << staticArray[i] << std::endl;
 		}
 	}
+}
+
+void DynamicArray::clear() {
+	delete[] staticArray;
+	currentSize = 0;
+	currentCapacity = initialCapacity;
+	staticArray = new int[initialCapacity];
 }
 
 void DynamicArray::reallocate() {
