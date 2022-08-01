@@ -1,4 +1,5 @@
 #include "DynamicArray.h"
+#include "InvalidArrayIndexException.h"
 #include <algorithm>
 #include <iostream>
 
@@ -29,8 +30,7 @@ int DynamicArray::get(int index) {
 	if (index >= 0 && index < currentSize) {
 		element = staticArray[index];
 	} else {
-		//TODO: Throw exception
-		element = -HUGE_VAL;
+		throw InvalidArrayIndexException{};
 	}
 	return element;
 }
@@ -39,7 +39,7 @@ void DynamicArray::set(int index, int value) {
 	if (index >= 0 && index < currentSize) {
 		staticArray[index] = value;
 	} else {
-		//TODO: Throw exception
+		throw InvalidArrayIndexException{};
 	}
 }
 
