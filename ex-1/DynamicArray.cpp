@@ -24,6 +24,25 @@ void DynamicArray::pushBack(int newElement) {
 	// TODO: Exception when relocation wasn't succesfull (allocation didn't work or something)
 }
 
+int DynamicArray::get(int index) {
+	int element;
+	if (index >= 0 && index < currentSize) {
+		element = staticArray[index];
+	} else {
+		//TODO: Throw exception
+		element = -HUGE_VAL;
+	}
+	return element;
+}
+
+void DynamicArray::set(int index, int value) {
+	if (index >= 0 && index < currentSize) {
+		staticArray[index] = value;
+	} else {
+		//TODO: Throw exception
+	}
+}
+
 void DynamicArray::displayAllElements() {
 	if (currentSize > 0) {
 		for (int i = 0; i < currentSize; i++) {

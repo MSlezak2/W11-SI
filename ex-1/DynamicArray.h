@@ -4,6 +4,8 @@ public:
 	DynamicArray();
 	~DynamicArray();
 	void pushBack(int newElement);
+	int get(int index);
+	void set(int index, int value);
 	void displayAllElements();
 
 private:
