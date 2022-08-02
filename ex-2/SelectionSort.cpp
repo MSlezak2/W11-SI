@@ -16,7 +16,6 @@ void SelectionSort::sort(std::vector<int>& vector) {
 				currentMinIndex = j;
 			}
 		}
-		//swap i-th element with currentMinIndex-th element
 		std::swap(vector[i], vector[currentMinIndex]);
 	}
 	//TODO: Maybe I should use pointers?
