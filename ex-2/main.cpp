@@ -3,6 +3,7 @@
 #include "BubbleSort.h"
 #include "InsertionSort.h"
 #include "MergeSort.h"
+#include "QuickSort.h"
 
 void displayVector(std::vector<int> vector);
 
@@ -51,6 +52,18 @@ int main() {
 
 	mergeSort.sort(testVector);
 	std::cout << "after merge sorting:" << std::endl;
+	displayVector(testVector);
+
+	//quick sorting
+	QuickSort quickSort;
+	//std:: cout << mergeSort.testMerge();
+	testVector = { 11,1,2,12,50,30,20 };
+
+	std::cout << "before sorting:" << std::endl;
+	displayVector(testVector);
+
+	quickSort.sort(testVector);
+	std::cout << "after quick sorting:" << std::endl;
 	displayVector(testVector);
 }
 
