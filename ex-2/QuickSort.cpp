@@ -12,21 +12,8 @@ std::vector<int> QuickSort::recursiveQuickSort(std::vector<int> vector) {
 	if (vector.size() <= 1) {
 		return vector;
 	} else {
-		// move pivot to its position, those not greater to the left, not lesser to the right
-		// TODO: extract to new function:
-		int leftIndex = 0;
-		int rightIndex = 0;
-		int pivotIndex = vector.size() - 1;
-
-		while (rightIndex < pivotIndex) {
-			if (vector[rightIndex] < vector[pivotIndex]) {
-				std::swap(vector[leftIndex], vector[rightIndex]);
-				leftIndex++;
-			}
-			rightIndex++;
-		}
-		std::swap(vector[leftIndex], vector[pivotIndex]);
-		pivotIndex = leftIndex;
+		// move pivot to its position, then move elements not greater than pivot to the left, and those not lesser to the right
+		int pivotIndex = placePivot(vector);
 
 		// send those to the left from pivot to sorting function (recursion)
 		if (pivotIndex > 0) { // if there is something to the right
@@ -45,5 +32,25 @@ std::vector<int> QuickSort::recursiveQuickSort(std::vector<int> vector) {
 		return vector;
 	}
 	
+}
+
+int QuickSort::placePivot(std::vector<int>& vector) {
+
+	int leftIndex = 0;
+	int rightIndex = 0;
+	int pivotIndex = vector.size() - 1;
+
+	while (rightIndex < pivotIndex) {
+		if (vector[rightIndex] < vector[pivotIndex]) {
+			std::swap(vector[leftIndex], vector[rightIndex]);
+			leftIndex++;
+		}
+		rightIndex++;
+	}
+
+	std::swap(vector[leftIndex], vector[pivotIndex]);
+	pivotIndex = leftIndex;
+
+	return pivotIndex;
 }
 
