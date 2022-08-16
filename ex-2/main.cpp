@@ -4,6 +4,7 @@
 #include "InsertionSort.h"
 #include "MergeSort.h"
 #include "QuickSort.h"
+#include "HeapSort.h"
 
 void displayVector(std::vector<int> vector);
 
@@ -65,6 +66,11 @@ int main() {
 	quickSort.sort(testVector);
 	std::cout << "after quick sorting:" << std::endl;
 	displayVector(testVector);
+
+	//heap sorting
+	HeapSort heapSort;
+	std:: cout << heapSort.testMaxheapify();
+	
 }
 
 void displayVector(std::vector<int> vector) {
