@@ -3,12 +3,29 @@
 
 void HeapSort::sort(std::vector<int>& vector) {
 	
-
+	std::vector<int> result;
+	while (vector.size() > 0) {
+		maxheapifyVector(vector);
+		iter_swap(vector.begin(), vector.end() - 1);
+		result.push_back(*(vector.end()-1));
+		vector.pop_back();
+	}
+	vector.swap(result);
+	//TODO: Is it a right (most efficient) way to do it?
 
 }
 
+void HeapSort::maxheapifyVector(std::vector<int>& vector) {
+	
+	//make the vector a max-heap (max-binary-tree stored as an array)
+	int lastNonLeafNodeIndex = vector.size() / 2;
+	for (int i = lastNonLeafNodeIndex; i >= 0; i--) {
+		maxheapifyNode(vector, i);
+	}
+}
+
 //TODO: Is & before "vector" necessary?
-void HeapSort::maxheapify(std::vector<int> &vector, int index) {
+void HeapSort::maxheapifyNode(std::vector<int> &vector, int index) {
 	
 	// -1 if there's no child
 	int leftChildIndex{ ((2 * index + 1) < vector.size()) ? (2 * index + 1) : -1 };
@@ -31,7 +48,7 @@ void HeapSort::maxheapify(std::vector<int> &vector, int index) {
 
 	if (greatestChildIndex != -1 && vector[index] < vector[greatestChildIndex]) {
 		std::swap(vector[index], vector[greatestChildIndex]);
-		maxheapify(vector,greatestChildIndex);
+		maxheapifyNode(vector,greatestChildIndex);
 	}
 }
 
@@ -42,7 +59,7 @@ bool HeapSort::testMaxheapify() {
 	std::vector<int> test{5,14,10,8,7,9,3,2,4,1};
 	std::vector<int> wanted{ 14,8,10,5,7,9,3,2,4,1 };
 
-	maxheapify(test,0);
+	maxheapifyNode(test,0);
 
 	if (test == wanted) {
 		isCorrect = true;

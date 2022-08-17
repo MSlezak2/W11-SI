@@ -69,7 +69,15 @@ int main() {
 
 	//heap sorting
 	HeapSort heapSort;
-	std:: cout << heapSort.testMaxheapify();
+	//std:: cout << heapSort.testMaxheapify();
+	testVector = { 11,1,2,12,50,30,20 };
+
+	std::cout << "before sorting:" << std::endl;
+	displayVector(testVector);
+
+	heapSort.sort(testVector);
+	std::cout << "after heap sorting:" << std::endl;
+	displayVector(testVector);
 	
 }
 

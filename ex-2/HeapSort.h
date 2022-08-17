@@ -8,6 +8,7 @@ public:
     bool testMaxheapify();
 
 private:
-    void maxheapify(std::vector<int> &vector, int index);
+    void maxheapifyVector(std::vector<int>& vector);
+    void maxheapifyNode(std::vector<int> &vector, int index);
 };
 
