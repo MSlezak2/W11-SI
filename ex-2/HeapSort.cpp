@@ -7,7 +7,7 @@ void HeapSort::sort(std::vector<int>& vector) {
 	while (vector.size() > 0) {
 		maxheapifyVector(vector);
 		iter_swap(vector.begin(), vector.end() - 1);
-		result.push_back(*(vector.end()-1));
+		result.insert(result.begin(), *(vector.end() - 1));
 		vector.pop_back();
 	}
 	vector.swap(result);
