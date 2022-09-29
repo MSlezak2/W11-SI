@@ -21,6 +21,52 @@ BST::Node* BST::find(int id) {
     return find(root, id);
 }
 
+void BST::add(int value) {
+    add(root, value);
+}
+
+void BST::removeNaive(int value) {
+    removeNaive(root, value);
+}
+
+void BST::removeNaive(Node*& current, int value) {
+    if (current != nullptr) {
+        if (value == current->value) {
+            deleteChildren(current);
+        } else if (value < current->value) {
+            removeNaive(current->left, value);
+        } else {
+            removeNaive(current->right, value);
+        }
+    }
+}
+
+void BST::deleteChildren(Node*& current) {
+    if (current != nullptr) {
+        if (current->left == nullptr && current->right == nullptr) { // when it's leaf
+            delete current;
+            current = nullptr;
+        } else {
+            deleteChildren(current->left);
+            deleteChildren(current->right);
+            delete current;
+            current = nullptr;
+        }
+    }
+}
+
+void BST::add(Node*& current, int value) {
+    if (current == nullptr) {
+        current = new Node(value);
+    } else {
+        if (value <= current->value) {
+            add(current->left, value);
+        } else {
+            add(current->right, value);
+        }
+    }
+}
+
 BST::Node* BST::find(Node* node, int id) {
     Node* result{ nullptr };
 
@@ -63,3 +109,4 @@ void BST::setChild(Node*& current, std::vector<int> chunk) {
         }
     }
 }
+
